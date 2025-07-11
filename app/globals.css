@@ -1,16 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
-body {
-  @apply bg-background text-text;
-}
-
-/* light theme override for later */
-body.light {
-  @apply bg-background-light text-text-light;
-}
 
 @theme inline {
 
@@ -89,9 +79,9 @@ body.light {
 
   --radius: 0.625rem;
 
-  --background: oklch(1 0 0);
-
-  --foreground: oklch(0.145 0 0);
+  --background: #F8FAFC;
+  
+  --foreground: #1F2937;
 
   --card: oklch(1 0 0);
 
@@ -101,21 +91,21 @@ body.light {
 
   --popover-foreground: oklch(0.145 0 0);
 
-  --primary: oklch(0.205 0 0);
+  --primary: #3B82F6;
 
-  --primary-foreground: oklch(0.985 0 0);
+  --primary-foreground: #FFFFFF;
 
   --secondary: oklch(0.97 0 0);
 
   --secondary-foreground: oklch(0.205 0 0);
 
-  --muted: oklch(0.97 0 0);
+  --muted: #E5E7EB;
 
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: #6B7280;
 
-  --accent: oklch(0.97 0 0);
+  --accent: #3B82F6;
 
-  --accent-foreground: oklch(0.205 0 0);
+  --accent-foreground: #FFFFFF;
 
   --destructive: oklch(0.577 0.245 27.325);
 
@@ -154,9 +144,9 @@ body.light {
 
 .dark {
 
-  --background: oklch(0.145 0 0);
+  --background: #1A1A1A;
 
-  --foreground: oklch(0.985 0 0);
+  --foreground: #F5F5F5;
 
   --card: oklch(0.205 0 0);
 
@@ -166,21 +156,21 @@ body.light {
 
   --popover-foreground: oklch(0.985 0 0);
 
-  --primary: oklch(0.922 0 0);
+  --primary: #3B82F6;
 
-  --primary-foreground: oklch(0.205 0 0);
+  --primary-foreground: #FFFFFF;
 
   --secondary: oklch(0.269 0 0);
 
   --secondary-foreground: oklch(0.985 0 0);
 
-  --muted: oklch(0.269 0 0);
+  --muted: #1F2937;
 
-  --muted-foreground: oklch(0.708 0 0);
+  --muted-foreground: #9CA3AF;
 
-  --accent: oklch(0.269 0 0);
+  --accent: #3B82F6;
 
-  --accent-foreground: oklch(0.985 0 0);
+  --accent-foreground: #FFFFFF;
 
   --destructive: oklch(0.704 0.191 22.216);
 
