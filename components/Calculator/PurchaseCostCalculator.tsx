@@ -71,10 +71,10 @@ export function PurchaseCostCalculator({
         {purchaseAmount > 0 && hourlyRate > 0 && (
           <div className="mt-4 p-4 bg-muted rounded-md">
             <p className="text-sm">
-              A purchase of <strong>£{purchaseAmount.toFixed(2)}</strong> costs
-              you <strong>{formatTime(hoursNeeded)}</strong> of work at your
-              hourly rate of <strong>£{hourlyRate.toFixed(2)}</strong> (based on
-              your monthly net salary of £{monthlySalary.toFixed(2)}).
+              A purchase of £{purchaseAmount.toFixed(2)} will cost you{" "}
+              {formatTime(hoursNeeded)} of work at an hourly rate of £
+              {hourlyRate.toFixed(2)}, based on a monthly take-home pay of £
+              {monthlySalary.toFixed(2)}.
             </p>
           </div>
         )}
