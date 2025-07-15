@@ -71,10 +71,13 @@ export function PurchaseCostCalculator({
         {purchaseAmount > 0 && hourlyRate > 0 && (
           <div className="mt-4 p-4 bg-muted rounded-md">
             <p className="text-sm">
-              A purchase of £{purchaseAmount.toFixed(2)} will cost you{" "}
+              A purchase of £{purchaseAmount.toFixed(2)} will cost you {""}
               {formatTime(hoursNeeded)} of work at an hourly rate of £
               {hourlyRate.toFixed(2)}, based on a monthly take-home pay of £
-              {monthlySalary.toFixed(2)}.
+              {monthlySalary.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
             </p>
           </div>
         )}
