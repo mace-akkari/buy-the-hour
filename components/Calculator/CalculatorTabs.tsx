@@ -6,6 +6,7 @@ import { HourlyRateCalculator } from "@/components/Calculator/HourlyRateCalculat
 import { PurchaseCostCalculator } from "@/components/Calculator/PurchaseCostCalculator";
 
 export function CalculatorTabs() {
+  const [tabValue, setTabValue] = useState("calculator");
   const [monthlySalary, setMonthlySalary] = useState<number>(0);
   const [workingHoursPerWeek, setWorkingHoursPerWeek] = useState<number>(0);
   const [purchaseAmount, setPurchaseAmount] = useState<number>(0);
@@ -18,7 +19,7 @@ export function CalculatorTabs() {
       : 0;
 
   return (
-    <Tabs defaultValue="calculator" className="w-full">
+    <Tabs value={tabValue} onValueChange={setTabValue} className="w-full">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="calculator">Salary Calculator</TabsTrigger>
         <TabsTrigger value="purchase">Purchase Cost</TabsTrigger>
@@ -31,8 +32,7 @@ export function CalculatorTabs() {
           workingHoursPerWeek={workingHoursPerWeek}
           setWorkingHoursPerWeek={setWorkingHoursPerWeek}
           hourlyRate={hourlyRate}
-          yearlyNetSalary={yearlyNetSalary}
-          totalWorkingHoursPerYear={totalWorkingHoursPerYear}
+          setTabValue={setTabValue}
         />
       </TabsContent>
 

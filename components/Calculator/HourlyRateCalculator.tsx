@@ -17,16 +17,14 @@ export function HourlyRateCalculator({
   setMonthlySalary,
   setWorkingHoursPerWeek,
   hourlyRate,
-  yearlyNetSalary,
-  totalWorkingHoursPerYear,
+  setTabValue,
 }: {
   monthlySalary: number;
   workingHoursPerWeek: number;
   setMonthlySalary: (value: number) => void;
   setWorkingHoursPerWeek: (value: number) => void;
   hourlyRate: number;
-  yearlyNetSalary: number;
-  totalWorkingHoursPerYear: number;
+  setTabValue: (value: string) => void;
 }) {
   return (
     <Card>
@@ -81,11 +79,23 @@ export function HourlyRateCalculator({
             <span className="text-xl font-bold">£{hourlyRate.toFixed(2)}</span>
           </div>
           <p className="text-xs text-muted-foreground mt-1">
-            Based on £{monthlySalary.toFixed(2)} monthly (£
-            {yearlyNetSalary.toFixed(2)} yearly) and {totalWorkingHoursPerYear}
-            working hours per year
+            This is based on your entered monthly take-home pay of £
+            {monthlySalary.toFixed(2)} and {workingHoursPerWeek} hours worked a
+            week.
           </p>
         </div>
+
+        <button
+          onClick={() => setTabValue("purchase")}
+          disabled={!monthlySalary || !workingHoursPerWeek}
+          className={`w-full mt-4 font-semibold py-2 rounded-md transition ${
+            !monthlySalary || !workingHoursPerWeek
+              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              : "bg-blue-600 text-white hover:bg-blue-700"
+          }`}
+        >
+          Next: See Purchase Cost
+        </button>
       </CardContent>
     </Card>
   );
