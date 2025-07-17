@@ -42,6 +42,7 @@ export function CalculatorTabs() {
           setPurchaseAmount={setPurchaseAmount}
           hourlyRate={hourlyRate}
           monthlySalary={monthlySalary}
+          setTabValue={setTabValue}
         />
       </TabsContent>
     </Tabs>

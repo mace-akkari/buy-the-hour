@@ -22,11 +22,13 @@ export function PurchaseCostCalculator({
   setPurchaseAmount,
   hourlyRate,
   monthlySalary,
+  setTabValue,
 }: {
   purchaseAmount: number;
   setPurchaseAmount: (value: number) => void;
   hourlyRate: number;
   monthlySalary: number;
+  setTabValue: (value: string) => void;
 }) {
   const hoursNeeded = purchaseAmount / hourlyRate;
 
@@ -81,6 +83,12 @@ export function PurchaseCostCalculator({
             </p>
           </div>
         )}
+        <button
+          onClick={() => setTabValue("calculator")}
+          className="w-full mt-4 bg-muted text-foreground font-semibold py-2 rounded-md hover:bg-muted/80 transition"
+        >
+          ← Back to Salary Calculator
+        </button>
       </CardContent>
     </Card>
   );
