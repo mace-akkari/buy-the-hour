@@ -80,8 +80,11 @@ export function HourlyRateCalculator({
           </div>
           <p className="text-xs text-muted-foreground mt-1">
             This is based on your entered monthly take-home pay of £
-            {monthlySalary.toFixed(2)} and {workingHoursPerWeek} hours worked a
-            week.
+            {monthlySalary.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}{" "}
+            and {workingHoursPerWeek} hours worked a week.
           </p>
         </div>
 
