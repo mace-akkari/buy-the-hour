@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 
-export default function SignInPage() {
+export default function SignInButton() {
   const router = useRouter();
 
   const handleGoogleSignIn = async () => {
@@ -18,13 +18,12 @@ export default function SignInPage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-4">
-      <button
-        onClick={handleGoogleSignIn}
-        className="bg-primary text-white px-6 py-2 rounded-md hover:bg-blue-700 cursor-pointer"
-      >
-        Sign in with Google
-      </button>
-    </main>
+    <button
+      onClick={handleGoogleSignIn}
+      className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:opacity-90 cursor-pointer"
+      type="button"
+    >
+      Sign in with Google
+    </button>
   );
 }
