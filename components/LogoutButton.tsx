@@ -9,8 +9,7 @@ export function LogoutButton() {
 
   const handleLogout = async () => {
     await signOut(auth);
-    router.push("/sign-in");
-    // router.push("/sign-up");
+    router.push("/");
   };
 
   return (
