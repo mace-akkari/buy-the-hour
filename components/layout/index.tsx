@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SignInButton from "@/components/auth/SignInButton";
+import { MainLogo } from "@/components/ui/MainLogo";
 
 export function Navbar() {
   return (
@@ -10,12 +11,10 @@ export function Navbar() {
           aria-label="Go to homepage"
           className="flex items-center gap-2"
         >
-          <span
-            className="inline-block h-8 w-8 rounded-md bg-primary/20"
-            aria-hidden
-          />
+          <MainLogo className="w-8 h-8 text-primary" />
           <span className="font-semibold">Buy the Hour</span>
         </Link>
+
         <div className="flex items-center gap-3">
           <SignInButton />
         </div>
