@@ -2,7 +2,7 @@
 
 import { CalculatorTabs } from "@/components/Calculator/CalculatorTabs";
 import { Greeting } from "@/components/Greeting";
-import { LogoutButton } from "@/components/LogoutButton";
+import { LogoutButton } from "@/components/auth/LogoutButton";
 
 export default function CalculatorPage() {
   return (
