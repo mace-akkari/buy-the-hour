@@ -1,5 +1,6 @@
 "use client";
 
+import SavePurchaseButton from "@/components/Calculator/SavePurchaseButton";
 import {
   Card,
   CardContent,
@@ -83,12 +84,17 @@ export function PurchaseCostCalculator({
             </p>
           </div>
         )}
-        <button
-          onClick={() => setTabValue("calculator")}
-          className="w-full mt-4 bg-muted text-foreground font-semibold py-2 rounded-md hover:bg-muted/80 transition"
-        >
-          ← Back to Salary Calculator
-        </button>
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button
+            onClick={() => setTabValue("calculator")}
+            className="w-full bg-muted text-foreground font-semibold py-2 rounded-md hover:bg-muted/80 transition"
+          >
+            ← Back to Salary Calculator
+          </button>
+          <div className="w-full [&>button]:w-full">
+            <SavePurchaseButton />
+          </div>
+        </div>
       </CardContent>
     </Card>
   );
