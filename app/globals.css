@@ -211,6 +211,15 @@
   * {
     @apply border-border outline-ring/50;
   }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    @apply bg-gray-200 rounded-full p-1 cursor-pointer;
+    filter: invert(1);
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    @apply bg-gray-300;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
