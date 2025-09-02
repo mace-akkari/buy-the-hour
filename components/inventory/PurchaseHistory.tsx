@@ -1,9 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
+import {
+  collection,
+  onSnapshot,
+  query,
+  orderBy,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Trash2 } from "lucide-react";
 
 type Purchase = { id: string; name: string; cost: number; date: string };
 
@@ -33,6 +41,19 @@ export function PurchaseHistory() {
     return () => unsubscribe();
   }, []);
 
+  // delete user purchase
+  const deletePurchase = async (id: string) => {
+    try {
+      await deleteDoc(doc(db, "userPurchaseHistory", id));
+    } catch (err) {
+      console.error("Failed to delete purchase", err);
+    }
+  };
+
+  //   const deletePurchase = async (id: string) => {
+  //     await deleteDoc(doc(db, "userPurchaseHistory", id));
+  // };
+
   return (
     <Card className="bg-white/5 border-white/10">
       <CardHeader>
@@ -46,12 +67,13 @@ export function PurchaseHistory() {
                 <th className="py-3 pl-4 pr-2 text-left">Date</th>
                 <th className="py-3 px-2 text-left">Item</th>
                 <th className="py-3 pr-4 pl-2 text-right">Price</th>
+                <th className="py-3 pr-3 pl-2 text-right w-0"></th>
               </tr>
             </thead>
             <tbody className="[&>tr:nth-child(even)]:bg-white/5">
               {items.length === 0 ? (
                 <tr>
-                  <td colSpan={3} className="py-4 px-4 text-center opacity-70">
+                  <td colSpan={4} className="py-4 px-4 text-center opacity-70">
                     No entries yet
                   </td>
                 </tr>
@@ -69,13 +91,25 @@ export function PurchaseHistory() {
                     <td className="py-3 pr-4 pl-2 text-right opacity-80">
                       £{Number(purchase.cost).toFixed(2)}
                     </td>
+                    <td className="py-3 pr-3 pl-2 text-right">
+                      <button
+                        type="button"
+                        onClick={() => deletePurchase(purchase.id)}
+                        aria-label={`Delete ${purchase.name}`}
+                        title="Delete"
+                        className="inline-flex h-6 w-6 items-center justify-center rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                        <span className="sr-only">Delete</span>
+                      </button>
+                    </td>
                   </tr>
                 ))
               )}
             </tbody>
             <tfoot className="border-t border-white/10">
               <tr>
-                <td className="py-3 pl-4 pr-2 font-medium" colSpan={2}>
+                <td className="py-3 pl-4 pr-2 font-medium" colSpan={3}>
                   Total cost of purchases:
                 </td>
                 <td className="py-3 pr-4 pl-2 text-right font-semibold">
