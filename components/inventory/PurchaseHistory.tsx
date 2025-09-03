@@ -42,16 +42,16 @@ export function PurchaseHistory() {
   }, []);
 
   // delete user purchase
-  const deletePurchase = async (id: string) => {
+  const deletePurchase = async (purchase: Purchase) => {
     try {
-      await deleteDoc(doc(db, "userPurchaseHistory", id));
+      await deleteDoc(doc(db, "userPurchaseHistory", purchase.id));
     } catch (err) {
       console.error("Failed to delete purchase", err);
     }
   };
 
-  //   const deletePurchase = async (id: string) => {
-  //     await deleteDoc(doc(db, "userPurchaseHistory", id));
+  // const deletePurchase = (purchase: Purchase): Promise<void> => {
+  //   return deleteDoc(doc(db, "userPurchaseHistory", purchase.id));
   // };
 
   return (
@@ -94,7 +94,7 @@ export function PurchaseHistory() {
                     <td className="py-3 pr-3 pl-2 text-right">
                       <button
                         type="button"
-                        onClick={() => deletePurchase(purchase.id)}
+                        onClick={() => deletePurchase(purchase)}
                         aria-label={`Delete ${purchase.name}`}
                         title="Delete"
                         className="inline-flex h-6 w-6 items-center justify-center rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20"
